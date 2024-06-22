@@ -13,5 +13,11 @@ Raspberry Pis all need to be on the same network.
 
 Each Pi needs to have SSH enabled and ssh keys setup to the host / control client that is running Ansible scripts. I use `ssh-copy-id <username>@<remote-IP> to ensure that subsequent ssh logins do not require passwords. This helps Ansible run without hard-coding or otherwise storing secrets on the user's local machine, but those are certainly options. Use secure methods of storing passwords, and do not post passwords to your forks!
 
-### 
-An Ansible control machine must be set up with ssh keys to each of the remote Raspberry Pis 
+### Running Configurations with Ansible
+Since my intention is to have the ability to scale the project with additional Raspberry Pis as I get them, I wanted to have a single configuration workflow to set them up. 
+
+After your Raspberry Pis are online and you have successfully ssh'ed into them and managed password handling (i.e., `ssh-copy-id` above), Ansible can be configured to apply the same updates and setup to each of the Pis. 
+
+In my case, I have each Pi as an individual group, and a collection of those Pis in another named group. Update your IP address or Hostnames in the `inventory.ini` file. 
+
+Additionally, the playbook yamls will need to point to the intended device or group. Update those manually. 
