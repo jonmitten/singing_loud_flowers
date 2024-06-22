@@ -1,0 +1,13 @@
+---
+- name: Universal Setup Init
+  hosts: wadam
+  become: yes
+  gather_facts: no
+  tasks: 
+    - name: Testing task 
+      debug:
+        msg: "Testing..."
+    - name: Update and upgrade apt packages
+      apt: 
+        update_cache: yes
+        upgrade: dist

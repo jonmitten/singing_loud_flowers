@@ -1,0 +1,34 @@
+---
+- name: Increase swap space on Raspberry Pi
+  hosts: wadam
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Ensure dphys-swapfile package is installed
+      apt:
+        name: dphys-swapfile
+        state: present
+        update_cache: yes
+
+    - name: Set swap file size to 2GB (2048MB)
+      lineinfile:
+        path: /etc/dphys-swapfile
+        regexp: '^CONF_SWAPSIZE='
+        line: 'CONF_SWAPSIZE=2048'
+        state: present
+
+    - name: Restart dphys-swapfile service to apply changes
+      service:
+        name: dphys-swapfile
+        state: restarted
+
+    - name: Reconfigure the swapfile
+      command: dphys-swapfile setup
+      notify:
+        - Restart dphys-swapfile service
+
+  handlers:
+    - name: Restart dphys-swapfile service
+      service:
+        name: dphys-swapfile
+        state: restarted
