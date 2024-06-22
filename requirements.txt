@@ -1,0 +1,12 @@
+certifi==2024.6.2
+cffi @ file:///private/tmp/cffi-20231014-5567-1hyue8f/cffi-1.16.0
+cryptography==42.0.8
+distlib @ file:///private/tmp/python-distlib-20231124-5231-2n0vb3/distlib-0.3.7
+docutils @ file:///private/tmp/docutils-20231015-5454-w1xze4/docutils-0.20.1
+filelock @ file:///private/tmp/python-filelock-20231112-5622-k62fq8/filelock-3.13.1/dist/filelock-3.13.1-py3-none-any.whl#sha256=57dbda9b35157b05fb3e58ee91448612eb674172fab98ee235ccb0b5bee19a1c
+packaging @ file:///private/tmp/python-packaging-20231018-5368-zv724j/packaging-23.2
+platformdirs @ file:///private/tmp/python-platformdirs-20231124-8775-x8oz64/platformdirs-4.0.0
+pycparser==2.22
+setuptools @ file:///private/tmp/python-setuptools-20231122-5040-cvipch/setuptools-69.0.2
+six==1.16.0
+wheel @ file:///opt/homebrew/Cellar/python%403.12/3.12.4/libexec/wheel-0.43.0-py3-none-any.whl#sha256=ff23205a590f2b902a2a21151019e96b93ab4a1409d7c9748b6bd210f4c0f44d
