@@ -1,14 +1,14 @@
 ---
 - name: Deploy button press script to Raspberry Pi devices
   hosts: raspberry_pi_zero
-  become: yes 
+  become: yes
+  gather_facts: yes
   tasks: 
     - name: Copy the button press script to the RPi Zeros
       copy:
-        src: /Users/jonmitten/development/singing_loud_flowers/scripts/gpio_button_sample.py 
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/gpio_button_sample.py
         dest: /home/jonmitten/gpio_button_sample.py
         mode: '0755'
-  tasks: 
     - name: Copy the button press script to the RPi Zeros
       copy:
         src: /Users/jonmitten/development/singing_loud_flowers/scripts/test_gpio.py 
