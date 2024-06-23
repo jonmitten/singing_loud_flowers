@@ -1,6 +1,6 @@
 ---
 - name: Deploy button press script to Raspberry Pi devices
-  hosts: wadam
+  hosts: raspberry_pi_zero
   become: yes
   gather_facts: yes
   gather_subset:
@@ -9,6 +9,6 @@
   tasks: 
     - name: Copy the button press script to the RPi Zeros
       copy:
-        src: /Users/jonmitten/development/singing_loud_flowers/python/test.gpio_button.py 
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/test.gpio_button.py 
         dest: /home/jonmitten/test.gpio_button.py
         mode: '0755'

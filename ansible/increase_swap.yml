@@ -1,6 +1,6 @@
 ---
 - name: Increase swap space on Raspberry Pi
-  hosts: wadam
+  hosts: raspberry_pi_zero
   become: yes
   gather_facts: no
   tasks:

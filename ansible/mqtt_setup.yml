@@ -1,31 +1,36 @@
 ---
 - name: Install Mosquitto on RPi
-  hosts: wadam
+  hosts: raspberry_pi_zero
   become: yes
   gather_facts: yes
   gather_subset:
     - '!all'
     - 'min'  
-  tasks: 
-    - name: Update and upgrade apt packages
-      apt: 
+  tasks:
+    - name: Ensure the system is updated
+      apt:
         update_cache: yes
         upgrade: dist
 
     - name: Install Mosquitto MQTT Broker
-      apt: 
+      apt:
         name: mosquitto
         state: present
 
-    - name: Install Mosquitto Clients
+    - name: Install Mosquitto clients
       apt:
-        name:
-          - mosquitto-client
+        name: mosquitto-clients
         state: present
 
     - name: Create Mosquitto configuration directory
-      file: 
-        path: /etc/mosquitto/conf.d 
+      file:
+        path: /etc/mosquitto/conf.d
+        state: directory
+        mode: '0755'
+
+    - name: Configure Mosquitto
+      copy:
+        dest: /etc/mosquitto/conf.d/mosquitto.conf
         content: |
           listener 1883
           allow_anonymous true

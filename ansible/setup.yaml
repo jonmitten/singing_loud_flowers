@@ -1,6 +1,6 @@
 ---
 - name: Universal Setup Init
-  hosts: wadam
+  hosts: raspberry_pi_zero
   become: yes
   gather_facts: no
   tasks: 
