@@ -30,7 +30,7 @@
 
     - name: Configure Mosquitto
       copy:
-        dest: /etc/mosquitto/conf.d/mosquitto.conf
+        dest: /etc/mosquitto/conf.d/singing.conf
         content: |
           listener 1883
           allow_anonymous true

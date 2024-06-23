@@ -9,6 +9,12 @@
   tasks: 
     - name: Copy the button press script to the RPi Zeros
       copy:
-        src: /Users/jonmitten/development/singing_loud_flowers/scripts/test.gpio_button.py 
-        dest: /home/jonmitten/test.gpio_button.py
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/gpio_button_sample.py 
+        dest: /home/jonmitten/gpio_button_sample.py
         mode: '0755'
+  tasks: 
+    - name: Copy the button press script to the RPi Zeros
+      copy:
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/test_gpio.py 
+        dest: /home/jonmitten/test_gpio.py
+        mode: '0755'        

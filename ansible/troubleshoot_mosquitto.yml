@@ -1,0 +1,80 @@
+---
+- name: Troubleshoot and configure Mosquitto
+  hosts: raspberry_pi_zero
+  become: yes
+  tasks:
+    - name: Check Mosquitto logs
+      command: tail -n 50 /var/log/mosquitto/mosquitto.log
+      register: mosquitto_logs
+      ignore_errors: yes
+
+    - name: Check systemd logs for Mosquitto service
+      command: journalctl -u mosquitto.service -n 50
+      register: systemd_logs
+      ignore_errors: yes
+
+    - name: Display Mosquitto logs
+      debug:
+        msg: "{{ mosquitto_logs.stdout_lines }}"
+    
+    - name: Display systemd logs for Mosquitto
+      debug:
+        msg: "{{ systemd_logs.stdout_lines }}"
+
+    - name: Verify Mosquitto configuration
+      command: mosquitto -c /etc/mosquitto/mosquitto.conf -v
+      register: mosquitto_config_check
+      ignore_errors: yes
+
+    - name: Display Mosquitto configuration check
+      debug:
+        msg: "{{ mosquitto_config_check.stdout_lines }}"
+
+    - name: Ensure Mosquitto service is stopped
+      systemd:
+        name: mosquitto
+        state: stopped
+
+    - name: Increase Mosquitto restart limits
+      blockinfile:
+        path: /etc/systemd/system/mosquitto.service.d/restart.conf
+        create: yes
+        block: |
+          [Service]
+          RestartSec=10
+
+    - name: Reload systemd configuration
+      command: systemctl daemon-reload
+
+    - name: Restart Mosquitto service
+      systemd:
+        name: mosquitto
+        state: restarted
+
+    - name: Check if port 1883 is in use
+      command: netstat -tuln | grep 1883
+      register: port_check
+      ignore_errors: yes
+
+    - name: Display port check result
+      debug:
+        msg: "{{ port_check.stdout_lines }}"
+
+    - name: Ensure dependencies are installed
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - mosquitto
+        - mosquitto-clients
+
+    - name: Check Mosquitto service status
+      systemd:
+        name: mosquitto
+        state: started
+        enabled: yes
+      register: mosquitto_status
+
+    - name: Display Mosquitto service status
+      debug:
+        msg: "{{ mosquitto_status }}"

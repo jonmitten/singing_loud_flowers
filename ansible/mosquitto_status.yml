@@ -1,0 +1,18 @@
+---
+- name: Check Mosquitto Statuses
+  hosts: all
+  become: yes
+  tasks:
+    - name: Reload systemd configuration
+      command: systemctl daemon-reload
+
+    - name: Check Mosquitto service status
+      systemd:
+        name: mosquitto
+        state: started
+        enabled: yes
+      register: mosquitto_status
+
+    - name: Display Mosquitto service status
+      debug:
+        msg: "{{ mosquitto_status }}"          
