@@ -1,8 +1,9 @@
+#copy script files to RPiZ
 ---
-- name: Deploy button press script to Raspberry Pi devices
+- name: Copy python scripts to home dir
   hosts: raspberry_pi_zero
   become: yes
-  gather_facts: yes
+  gather_facts: no
   tasks: 
     - name: Copy gpio_button_sample.py to home dir
       copy:

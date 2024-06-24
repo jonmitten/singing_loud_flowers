@@ -43,4 +43,9 @@
         state: restarted
         enabled: yes
 
+    - name: Install paho-mqtt via pip at version 1.6
+      ansible.builtin.pip:
+        name: "paho-mqtt==1.6"
+        executable: pip3
+
         
