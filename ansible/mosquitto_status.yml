@@ -1,6 +1,6 @@
 ---
 - name: Check Mosquitto Statuses
-  hosts: all
+  hosts: flowers
   become: yes
   tasks:
     - name: Reload systemd configuration

@@ -2,19 +2,20 @@
 Deploy to Pi Zeros with:
 ansible-playbook -i inventory.ini test_python_gpio.yml
 """
-import RPi.GPIO as GPIO
+import RPi.GPIO as gpio
 import time
 
 led_test_pin = 18
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(led_test_pin,GPIO.OUT)
+gpio.setmode(gpio.BCM)
+gpio.setwarnings(False)
+gpio.setup(led_test_pin, gpio.OUT)
 
 for i in range(10):
   print("LED on")
-  GPIO.output(led_test_pin,GPIO.HIGH)
+  gpio.output(led_test_pin, gpio.HIGH)
   time.sleep(.1)
   print("LED off")
-  GPIO.output(led_test_pin,GPIO.LOW)
+  gpio.output(led_test_pin, gpio.LOW)
   time.sleep(.1)
+gpio.cleanup()

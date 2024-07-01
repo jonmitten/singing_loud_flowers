@@ -1,10 +1,15 @@
 #copy script files to RPiZ
 ---
 - name: Copy python scripts to home dir
-  hosts: raspberry_pi_zero
+  hosts: flowers
   become: yes
   gather_facts: no
-  tasks: 
+  tasks:
+    - name: Copy mqtt_pub_sub_button_test.py to home dir
+      copy:
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/mqtt_pub_sub_button_test.py
+        dest: /home/jonmitten/mqtt_pub_sub_button_test.py
+        mode: '0755'
     - name: Copy gpio_button_sample.py to home dir
       copy:
         src: /Users/jonmitten/development/singing_loud_flowers/scripts/gpio_button_sample.py

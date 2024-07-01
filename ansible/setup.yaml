@@ -1,6 +1,6 @@
 ---
 - name: Universal Setup Init
-  hosts: raspberry_pi_zero
+  hosts: flowers
   become: yes
   gather_facts: no
   tasks: 

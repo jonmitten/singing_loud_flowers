@@ -1,6 +1,6 @@
 ---
 - name: Troubleshoot and configure Mosquitto
-  hosts: raspberry_pi_zero
+  hosts: flowers
   become: yes
   tasks:
     - name: Check Mosquitto logs
