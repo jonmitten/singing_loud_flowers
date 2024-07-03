@@ -1,6 +1,6 @@
 """
 Deploy to Pi Zeros with:
-ansible-playbook -i inventory.ini test_python_gpio.yml
+ansible-playbook -i inventory.ini gpio.python.test.playbook.yml
 """
 import RPi.GPIO as gpio
 import time

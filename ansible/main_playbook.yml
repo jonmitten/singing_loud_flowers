@@ -1,7 +1,0 @@
-# main_playbook.yml
----
-- import_playbook: setup.yaml
-- import_playbook: increase_swap.yml
-- import_playbook: mqtt_setup.yml
-- import_playbook: python_setup.yml
-- import_playbook: copy_scripts.yml
