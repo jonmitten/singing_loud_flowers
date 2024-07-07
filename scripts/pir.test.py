@@ -2,13 +2,12 @@ import RPi.GPIO as gpio
 import time
 import datetime
 
-# Set up the gpio pin
-gpio.cleanup()
+# Set up the GPIO pin
 test_pir_pin = 14
 test_led_pin = 18
 test_button_pin = 17
 
-# Configure gpio settings
+# Configure GPIO settings
 gpio.setmode(gpio.BCM)  # Use BCM numbering
 
 # Setup pins
@@ -77,4 +76,4 @@ except KeyboardInterrupt:
   print("Quit")
 
 finally:
-  gpio.cleanup()  # Reset gpio settings
+  gpio.cleanup()  # Reset GPIO settings

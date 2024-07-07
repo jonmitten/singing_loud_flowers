@@ -1,5 +1,5 @@
 ---
-- name: Install gpio and MQTT libraries for Python
+- name: Install GPIO and MQTT libraries for Python
   hosts: flowers
   become: yes
   tasks:
@@ -16,14 +16,14 @@
         state: present
       when: ansible_os_family == "Debian"
 
-#    - name: Install Python gpio Library
+#    - name: Install Python GPIO Library
 #      apt:
-#        name: python3-rpi.gpio
+#        name: python3-rpi.GPIO
 #        state: present
 
-    - name: Install Python gpio Library via pip
+    - name: Install Python GPIO Library via pip
       pip:
-        name: RPi.gpio
+        name: RPi.GPIO
 
     - name: Install paho-mqtt via pip at version 1.6
       ansible.builtin.pip:

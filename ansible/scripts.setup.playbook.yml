@@ -1,0 +1,41 @@
+#copy script files to RPiZ
+---
+- name: Copy python scripts to home dir
+  hosts: flowers
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Copy pub_sub_button.test.py to home dir
+      copy:
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/pub_sub_button.test.py
+        dest: /home/jonmitten/pub_sub_button.test.py
+        mode: '0755'
+    - name: Copy gpio_button_sample.py to home dir
+      copy:
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/gpio_button_sample.py
+        dest: /home/jonmitten/gpio_button_sample.py
+        mode: '0755'
+    - name: Copy GPIO.test.py to home dir
+      copy:
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/GPIO.test.py
+        dest: /home/jonmitten/GPIO.test.py
+        mode: '0755'
+    - name: Copy led_test to home dir
+      copy:
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/blink.test.py
+        dest: /home/jonmitten/blink.test.py
+        mode: '0755'
+    - name: Copy mqtt_button_test to home dir
+      copy:
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/button.mqtt.test.py
+        dest: /home/jonmitten/button.mqtt.test.py
+        mode: '0755'
+    - name: Copy blink to home dir
+      copy:
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/blink.py
+        dest: /home/jonmitten/blink.py
+        mode: '0755'
+    - name: Run `python3 blink.test.py` copy_script complete
+      command: python3 /home/jonmitten/blink.test.py
+      args:
+        chdir: /home/jonmitten/

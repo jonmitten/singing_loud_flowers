@@ -11,3 +11,12 @@
       apt: 
         update_cache: yes
         upgrade: dist
+- import_playbook: increase_swap.setup.playbook.yml
+- import_playbook: python.setup.playbook.yml
+- import_playbook: mqtt_setup.playbook.yml
+- import_playbook: scripts.setup.playbook.yml
+- import_playbook: gpio.python.setup.playbook.yml
+- import_playbook: gpio.python.test.playbook.yml
+- import_playbook: mosquitto.test.playbook.yml
+- import_playbook: pir_test.playbook.yml
+

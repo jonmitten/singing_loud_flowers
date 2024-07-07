@@ -6,25 +6,25 @@
   tasks:
     - name: Copy led_test to home dir
       copy:
-        src: /Users/jonmitten/development/singing_loud_flowers/scripts/led_test.py
-        dest: /home/jonmitten/led_test.py
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/blink.test.py
+        dest: /home/jonmitten/blink.test.py
         mode: '0755'
       tags:
         - led
-        - gpio
+        - GPIO
         - test
 
-    - name: Copy pir_test.py to home dir
+    - name: Copy pir.test.py to home dir
       copy:
-        src: /Users/jonmitten/development/singing_loud_flowers/scripts/pir_test.py
-        dest: /home/jonmitten/pir_test.py
+        src: /Users/jonmitten/development/singing_loud_flowers/scripts/pir.test.py
+        dest: /home/jonmitten/pir.test.py
         mode: '0755'
       tags:
         - pir
         - test
 
-    - name: Run `python3 led_test.py` from home dir
-      command: python3 /home/jonmitten/led_test.py
+    - name: Run `python3 blink.test.py` pir_test complete
+      command: python3 /home/jonmitten/blink.test.py
       args:
         chdir: /home/jonmitten/
       tags:

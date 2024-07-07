@@ -11,10 +11,10 @@ MQTT_PORT = 1883
 MQTT_TOPIC = "singing_loud_flowers"
 MQTT_MESSAGE = "Button was pressed!"
 
-# Set up gpio mode
+# Set up GPIO mode
 gpio.setmode(gpio.BCM)
 
-# Set up gpio pin 27 as an input with a pull-up resistor
+# Set up GPIO pin 27 as an input with a pull-up resistor
 gpio.setup(test_button_pin, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 
@@ -44,5 +44,5 @@ try:
 except KeyboardInterrupt:
   print("Exiting program")
 
-# Clean up gpio settings before exiting
+# Clean up GPIO settings before exiting
 gpio.cleanup()

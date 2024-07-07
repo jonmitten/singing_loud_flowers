@@ -1,10 +1,10 @@
 import RPi.GPIO as gpio
 import time
 
-# Set the gpio mode
+# Set the GPIO mode
 gpio.setmode(gpio.BCM)
 
-# List of all gpio pins on Raspberry Pi (excluding power and ground)
+# List of all GPIO pins on Raspberry Pi (excluding power and ground)
 all_pins = [4, 5, 6, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
 
 # Callback function to handle events
@@ -24,5 +24,5 @@ try:
 except KeyboardInterrupt:
     print("Exiting program")
 
-# Clean up gpio settings
+# Clean up GPIO settings
 gpio.cleanup()

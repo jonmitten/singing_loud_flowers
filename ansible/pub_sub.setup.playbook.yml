@@ -1,0 +1,24 @@
+- hosts: flowers
+  become: yes
+  tasks:
+  - name: Install Python and Paho-MQTT
+    apt:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+        - python3-pip
+        - python3-paho-mqtt
+
+  - name: Transfer Publisher Script
+    copy:
+      src: ../scripts/pub.py
+      dest: /home/jonmitten/publisher.py
+
+  - name: Transfer Subscriber Script
+    copy:
+      src: ../scripts/sub.py
+      dest: /home/jonmitten/subscriber.py
+
+  - name: Run Subscriber (As a service or background task)
+    shell: nohup python3 /home/jonmitten/subscriber.py &
